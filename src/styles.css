@@ -1,0 +1,436 @@
+:root {
+  color-scheme: light;
+  background: #f4f6f8;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  background:
+    linear-gradient(180deg, rgba(22, 119, 255, 0.08), transparent 340px),
+    linear-gradient(90deg, rgba(19, 168, 168, 0.08), transparent 420px),
+    #f4f6f8;
+}
+
+.app-shell {
+  min-height: 100vh;
+}
+
+.command-center {
+  width: calc(100% - clamp(430px, 42vw, 680px) - 30px);
+  max-width: 1180px;
+  padding: 22px 24px 34px;
+}
+
+.room-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 72px;
+  margin-bottom: 14px;
+}
+
+.room-header h2,
+.result-card h3 {
+  margin: 0;
+}
+
+.brand-avatar {
+  background: linear-gradient(135deg, #1677ff, #13a8a8);
+  box-shadow: 0 12px 26px rgba(22, 119, 255, 0.22);
+}
+
+.metric-row {
+  margin-bottom: 14px;
+}
+
+.workspace-card {
+  margin-bottom: 14px;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.06);
+}
+
+.member-list {
+  max-height: 360px;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.member-form {
+  margin-bottom: -16px;
+}
+
+.full-width,
+.control-segment {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.need-alert {
+  margin: 14px 0;
+}
+
+.venue-list {
+  margin-top: 6px;
+}
+
+.venue-item {
+  display: grid !important;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 12px;
+  padding: 14px !important;
+  border: 1px solid #edf0f5;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.venue-item + .venue-item {
+  margin-top: 10px;
+}
+
+.venue-item.selected {
+  border-color: rgba(22, 119, 255, 0.45);
+  background: #f7fbff;
+  box-shadow: inset 3px 0 0 #1677ff;
+}
+
+.venue-rank {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border-radius: 8px;
+  background: #eef5ff;
+  color: #1677ff;
+  font-weight: 800;
+}
+
+.venue-main {
+  min-width: 0;
+}
+
+.venue-address {
+  margin: 6px 0 6px !important;
+}
+
+.result-card {
+  min-height: 150px;
+  padding: 18px;
+  border: 1px solid #d9e8ff;
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(22, 119, 255, 0.08), transparent 52%),
+    #ffffff;
+}
+
+.map-dock {
+  position: fixed;
+  top: 14px;
+  right: 14px;
+  z-index: 10;
+  width: clamp(430px, 42vw, 680px);
+  height: calc(100vh - 28px);
+}
+
+.map-card,
+.map-card > .ant-card-body {
+  height: 100%;
+}
+
+.map-card > .ant-card-body {
+  display: grid;
+  grid-template-rows: auto auto minmax(300px, 1fr) auto;
+  gap: 12px;
+}
+
+.key-row .ant-input-affix-wrapper {
+  min-width: 0;
+}
+
+.map-tools {
+  min-height: 34px;
+}
+
+.map-viewport {
+  position: relative;
+  min-height: 320px;
+}
+
+.amap-canvas {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  min-height: 320px;
+  border: 1px solid #e5e9f0;
+  border-radius: 8px;
+  background: #e9f0f5;
+}
+
+.amap-canvas.ready {
+  background: #fff;
+}
+
+.route-summary {
+  max-height: 210px;
+  overflow: auto;
+  border: 1px solid #edf0f5;
+  border-radius: 8px;
+  padding: 4px 10px;
+}
+
+.route-row-item {
+  display: grid !important;
+  grid-template-columns: 10px minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  padding: 12px 0 !important;
+}
+
+.route-dot {
+  display: block;
+  width: 9px;
+  height: 9px;
+  margin-top: 7px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(22, 119, 255, 0.08);
+}
+
+.route-row-copy {
+  min-width: 0;
+}
+
+.route-row-copy .ant-typography {
+  line-height: 1.55;
+}
+
+.venue-float-card {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 4;
+  width: min(330px, calc(100% - 28px));
+  padding: 12px;
+  border: 1px solid rgba(226, 232, 240, 0.92);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 16px 32px rgba(15, 23, 42, 0.14);
+  backdrop-filter: blur(12px);
+}
+
+.venue-float-address {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.mock-map {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.72) 1px, transparent 1px) 0 0 / 54px 54px,
+    linear-gradient(rgba(255, 255, 255, 0.72) 1px, transparent 1px) 0 0 / 54px 54px,
+    radial-gradient(circle at 68% 28%, rgba(22, 119, 255, 0.2), transparent 22%),
+    radial-gradient(circle at 30% 66%, rgba(19, 168, 168, 0.18), transparent 24%),
+    #dfeaf2;
+}
+
+.road {
+  position: absolute;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.04);
+}
+
+.road-one {
+  top: 20%;
+  left: -8%;
+  width: 82%;
+  height: 18px;
+  transform: rotate(23deg);
+}
+
+.road-two {
+  top: 58%;
+  right: -12%;
+  width: 95%;
+  height: 16px;
+  transform: rotate(-17deg);
+}
+
+.road-three {
+  top: -10%;
+  left: 48%;
+  width: 18px;
+  height: 116%;
+  transform: rotate(9deg);
+}
+
+.mock-pin,
+.mock-destination {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-weight: 900;
+  box-shadow: 0 12px 22px rgba(15, 23, 42, 0.2);
+}
+
+.mock-pin {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+}
+
+.pin-1 {
+  top: 24%;
+  left: 22%;
+}
+
+.pin-2 {
+  top: 58%;
+  left: 17%;
+}
+
+.pin-3 {
+  top: 33%;
+  left: 62%;
+}
+
+.pin-4 {
+  top: 71%;
+  left: 71%;
+}
+
+.pin-5 {
+  top: 18%;
+  left: 78%;
+}
+
+.pin-6 {
+  top: 75%;
+  left: 42%;
+}
+
+.mock-destination {
+  top: 49%;
+  left: 47%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50% 50% 50% 8px;
+  background: #0f172a;
+  transform: rotate(-45deg);
+}
+
+.mock-destination::first-letter {
+  transform: rotate(45deg);
+}
+
+.mock-caption {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  display: grid;
+  gap: 3px;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(10px);
+}
+
+.amap-member-dot {
+  width: 14px;
+  height: 14px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: var(--member-color);
+  box-shadow:
+    0 5px 12px rgba(15, 23, 42, 0.22),
+    0 0 0 4px color-mix(in srgb, var(--member-color) 22%, transparent);
+}
+
+.amap-venue {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  border: 2px solid #1677ff;
+  border-radius: 50%;
+  background: #fff;
+  color: #1677ff;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.amap-destination {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border-radius: 50% 50% 50% 8px;
+  background: #0f172a;
+  color: #fff;
+  font-weight: 900;
+  transform: rotate(-45deg);
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.22);
+}
+
+.amap-destination span {
+  transform: rotate(45deg);
+}
+
+@media (max-width: 1180px) {
+  .command-center {
+    width: calc(100% - 430px - 28px);
+    padding: 18px;
+  }
+
+  .map-dock {
+    width: 416px;
+  }
+}
+
+@media (max-width: 900px) {
+  .command-center {
+    width: 100%;
+    padding: 14px;
+  }
+
+  .room-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .map-dock {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: calc(100% - 28px);
+    height: 660px;
+    margin: 0 14px 14px;
+  }
+}
+
+@media (max-width: 560px) {
+  .venue-item {
+    grid-template-columns: 1fr;
+  }
+
+  .venue-rank {
+    width: 100%;
+  }
+
+  .key-row {
+    display: grid !important;
+  }
+}
